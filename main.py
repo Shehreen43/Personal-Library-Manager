@@ -81,38 +81,55 @@ class BookCollection:
 
     def update_book(self):
         """Modify the details of an existing book in the collection."""
-        book_title = input("Enter the title of the book you want to edit: ")
+        book_title = input("Enter the title of the book you want to edit: ").strip()
+    
+        # Search for the book by title
         for book in self.book_list:
-            if book["title"].lower() == book_title.lower():
-                print("Leave blank to keep existing value.")
-                book["title"] = input(f"New title ({book['title']}): ") or book["title"]
-                book["author"] = (
-                    input(f"New author ({book['author']}): ") or book["author"]
-                )
-                book["year"] = input(f"New year ({book['year']}): ") or book["year"]
-                book["genre"] = input(f"New genre ({book['genre']}): ") or book["genre"]
-                book["read"] = (
-                    input("Have you read this book? (yes/no): ").strip().lower()
-                    == "yes"
-                )
-                self.save_to_file()
-                print("Book updated successfully!\n")
-                return
-        print("Book not found!\n")
+          if book["title"].lower() == book_title.lower():
+              print("Leave blank to keep the existing value.")
+            
+            # Prompt user for new values or keep existing ones
+              new_title = input(f"New title ({book['title']}): ").strip()
+              new_author = input(f"New author ({book['author']}): ").strip()
+              new_year = input(f"New year ({book['year']}): ").strip()
+              new_genre = input(f"New genre ({book['genre']}): ").strip()
+              new_read_status = input("Have you read this book? (yes/no): ").strip().lower()
+            
+            # Update the book details
+              book["title"] = new_title if new_title else book["title"]
+              book["author"] = new_author if new_author else book["author"]
+              book["year"] = new_year if new_year else book["year"]
+              book["genre"] = new_genre if new_genre else book["genre"]
+              book["read"] = True if new_read_status == "yes" else False if new_read_status == "no" else book["read"]
+            
+            # Save the updated collection to the file
+              self.save_to_file()
+              print("Book updated successfully!\n")
+              return
+    
+    # If the book is not found
+    print("Book not found!\n")
 
     def show_all_books(self):
         """Display all books in the collection with their details."""
         if not self.book_list:
-            print("Your collection is empty.\n")
-            return
+           print("Your collection is empty.\n")
+           return
 
-        print("Your Book Collection:")
+        print("📚 Your Book Collection 📚")
+        print("=" * 40)
         for index, book in enumerate(self.book_list, 1):
             reading_status = "Read" if book["read"] else "Unread"
             print(
-                f"{index}. {book['title']} by {book['author']} ({book['year']}) - {book['genre']} - {reading_status}"
+                f"{index}. Title: {book['title']}\n"
+                f"   Author: {book['author']}\n"
+                f"   Year: {book['year']}\n"
+                f"   Genre: {book['genre']}\n"
+                f"   Status: {reading_status}\n"
             )
-        print()
+            print("-" * 40)
+
+        print(f"Total books in collection: {len(self.book_list)}\n")
 
     def show_reading_progress(self):
         """Calculate and display statistics about your reading progress."""
@@ -160,3 +177,5 @@ class BookCollection:
 if __name__ == "__main__":
     book_manager = BookCollection()
     book_manager.start_application()
+
+
