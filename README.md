@@ -62,3 +62,12 @@ Personal-Library-Manager/
 ├── main.py            # Main Python script
 └── books_data.json    # Data file (auto-generated)
 ```
+## 🚀 Future Improvements
+
+GUI interface using Tkinter or PyQt
+
+Export book list to PDF or CSV
+
+Sorting and filtering features
+
+Advanced search options
