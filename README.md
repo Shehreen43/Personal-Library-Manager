@@ -57,8 +57,8 @@ python main.py
 ```
 
 📁 Project Structure
-
+```bash
 Personal-Library-Manager/
 ├── main.py            # Main Python script
 └── books_data.json    # Data file (auto-generated)
-
+```
