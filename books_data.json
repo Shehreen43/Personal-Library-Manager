@@ -1,0 +1,16 @@
+[
+    {
+        "title": "Meri Kahani",
+        "author": "Shehreen Arshad",
+        "year": "2025",
+        "genre": "kahani",
+        "read": true
+    },
+    {
+        "title": "Stars are Shin in the Sky",
+        "author": "Shehreen ",
+        "year": "2024",
+        "genre": "Story",
+        "read": false
+    }
+]
