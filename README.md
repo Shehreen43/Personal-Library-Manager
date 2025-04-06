@@ -54,9 +54,11 @@ All books are saved in a file named `books_data.json` so your collection persist
 
 ```bash
 python main.py
+```
 
 📁 Project Structure
 
 Personal-Library-Manager/
 ├── main.py            # Main Python script
 └── books_data.json    # Data file (auto-generated)
+
